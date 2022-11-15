@@ -1,1 +1,24 @@
-123
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+  ifstream in 
+  char last, new;
+  int max_lentgth = 0, cur_length;
+  auto in = ifstream("new1");
+  in >> last;
+  while(in >> new){
+    if(last == "b" and new == "d" or last == "b" and new == "a"){
+        cur_length = 1;
+        last = new
+    }
+    else{
+        cur_length++;
+        if(cur > max){
+            max = cur;
+        
+    
+      
+  
