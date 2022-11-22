@@ -4,20 +4,25 @@ using namespace std;
 
 int main()
 {
-	ifstream in ("D:\c++\ABC.txt");
-	int sum = 1, max = 0;
+	ifstream("C:\\Users\\111040\\c++\\ABD.txt");
 	string str;
-	while(getline(in, str)){
-		for(int i = 0; i < str.size(); i++){
-			if(str[i] == 'B' and str[i+1] == 'B'){
-				sum += 1;
-			}
-			cout << sum;
-			if(sum > max){
-				max = sum;
-			}
+	char last;
+	char new1;
+	int max_lentgth = 1, cur_length = 1;
+	ifstream in("C:\\Users\\111040\\c++\\ABD.txt");
+	in >> last;
+	while(in >> new1){
+    	if(last == 'B' and new1 == 'B'){
+        	cur_length ++;
+        }
+    	else{
+        	cur_length = 1;
 		}
-	}
-	cout << max;
+		last = new1;
+		if(cur_length > max_lentgth){
+        		max_lentgth = cur_length;
+        	}
+    }
+	cout << max_lentgth;
 	return 0;
 }
