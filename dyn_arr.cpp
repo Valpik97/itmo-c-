@@ -8,7 +8,7 @@ public:
 	int cap;
 	
 	dyn_arr(int _max,int _cap){
-		arr = new int* [max];
+		arr = new int[max];
 		max = _max; 
 		cap = _cap;
 	}
@@ -27,7 +27,17 @@ void add(int a){
 	arr[cap] = a;
 	cap++;
 }
-};
+void remove(int place)
+{
+    if ((place < 0) || (place >= max))
+        cout << "error";
+    else
+    {
+    	for(int i = place+1; i < max; ++i)
+            arr[i-1] = arr[i];
+			max--;
+    }
+}
 
 dyn_arr operator <<(ostream& out, const dyn_arr& xarr){
 	for(int i = 0; i < xarr.cap; i++){
@@ -36,5 +46,5 @@ dyn_arr operator <<(ostream& out, const dyn_arr& xarr){
 	
 }
 int main(){
-	
+	dyn_arr ab()
 }
