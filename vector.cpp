@@ -1,21 +1,42 @@
 #include<iostream>
 #include<cstring>
 #include<vector>
+#include<string>
 
 using namespace std;
 
-
+template<typename T>
 class TMyIntVector {
 public:
 	TMyIntVector(size_t _capacity) 
 		: __capacity(_capacity)
 		, __size(0)
 	{
-		__first_elem = new int[__capacity];
+		__first_elem = new T[__capacity];
 	}
 	
-	TMyIntVector(TMyIntVector& rhs) = delete;
-	TMyIntVector& operator=(TMyIntVector& rhs) = delete;
+	TMyIntVector(TMyIntVector& other) {
+    if (this != &other) {
+        delete[] __first_elem;
+     	__first_elem = new T[other.__capacity];
+        for (size_t i = 0; i < other.__size; ++i)
+			__first_elem[i] = other.__first_elem[i];
+        __size = other.__size;
+        __capacity = other.__capacity;
+    }
+}
+
+	TMyIntVector& operator=(TMyIntVector& other) {
+    if (this != &other) {
+        delete[] __first_elem;
+      	__first_elem = new T[other.__capacity];
+      	for (size_t i = 0; i < other.__size; ++i) 
+			__first_elem[i] = other.__first_elem[i];
+        __size = other.__size;
+        __capacity = other.__capacity;
+    }
+    return *this;
+}
 	
 	~TMyIntVector() {
 		delete[] __first_elem;
@@ -24,7 +45,7 @@ public:
 	void push_back(int _elem) {
 		if (__size == __capacity) {
 			__capacity *= 2;
-			int* tmp = new int[__capacity];
+			T* tmp = new T[__capacity];
 			
 			memcpy(tmp, __first_elem, __size * sizeof(int));
 			delete [] __first_elem;
@@ -35,6 +56,9 @@ public:
 		__first_elem[__size] = _elem;
 		__size++;
 	}
+	void remove(int _elem2){
+		__size--;
+	}
 	
 	int operator[](size_t _index) const {
 		return __first_elem[_index];
@@ -43,39 +67,33 @@ public:
 	size_t size() const {
 		return __size;
 	}
-	
 	size_t capacity() const {
 		return __capacity;
 	}
 private:
-	int* __first_elem;
+	T* __first_elem;
 	size_t __size;
-	size_t __capacity; // __size == __capacity ?
+	size_t __capacity;
 };
 
+template<typename T>
+inline ostream& operator<<(ostream& os, const TMyIntVector<T>& vec) {
+    for (size_t i = 0; i < vec.size(); ++i) 
+		os << vec[i] << " ";
+    return os;
+}
+
 int main() {
-//	vector<int> vec = {1, 2, 3, 4};
-//	cout << "size: " << vec.size() << endl;
-//	cout << "capacity: " << vec.capacity() << endl;
-//	
-//	vec.push_back(1);
-//	cout << "capacity: " << vec.capacity() << endl;
-//	vec.push_back(2);
-//	
-//	cout << "size: " << vec.size() << endl;
-//	cout << "capacity: " << vec.capacity() << endl;
 	
-	TMyIntVector myVec(1);
+ 
+	TMyIntVector<int> myVec(1);
 	cout << "size: " << myVec.size() << " capacity: " << myVec.capacity() << endl;
 	myVec.push_back(1);
 	cout << "size: " << myVec.size() << " capacity: " << myVec.capacity() << endl;
 	myVec.push_back(2);
-	cout << "size: " << myVec.size() << " capacity: " << myVec.capacity() << endl;
-	myVec.push_back(3);
-	cout << "size: " << myVec.size() << " capacity: " << myVec.capacity() << endl;
-	myVec.push_back(4);
-	cout << "size: " << myVec.size() << " capacity: " << myVec.capacity() << endl;
-	for(int i = 0; i < myVec.size(); i++){
-		cout << myVec.
-	}
+	cout << myVec;
+		
+	
+	
+	
 }
