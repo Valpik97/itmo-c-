@@ -50,15 +50,16 @@ public:
 //		    pop();
 //		}
 //	}
+//надо пределать деструктр с try catch	
 	
-	int operator[](size_t _index) const {
-		int stb;
-		for (int i = 0; i < _index; i++){
-			stb = first -> value;
-		}
-		return first -> next -> value;
-	}
-	
+//	int operator[](size_t _index) const {
+//		int stb;
+//		for (int i = 0; i < _index; i++){
+//			stb = first -> value;
+//		}
+//		return first -> next -> value;
+//	}
+//надо доделать перегрузку скобок для вывода стека
 };
 
 template<typename T>
