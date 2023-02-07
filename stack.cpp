@@ -11,11 +11,18 @@ struct Node{
 template<typename T>
 class stack{
 private:
-	
 	Node<T>* first;
-	size_t cap;
+	
 	
 public:
+	int cap;
+	
+	T top(){
+		if(first == 0){
+			cout << ("Stack is empty");
+		}
+		return first -> value;
+	}
 	
 	void push(T a){
 		Node<T>* tmp = new Node<T>;
@@ -26,55 +33,63 @@ public:
 		delete[] tmp;
 	}
 	
+	
 	void pop(){
-		Node<T>* tmp = new Node<T>;
-		first = first -> next;
-		tmp -> value = first -> next -> value;
+        Node<T>* tmp = new Node<T>;
+		tmp -> value = first ->value;
+		tmp -> next = first;
+		first = tmp;
 		cap -= 1;
 		delete[] first;
-		first = tmp;
 		delete[] tmp;
+		
 	}
 	
 	stack(T rhs){
 		Node<T>* tmp = new Node<T>;
 		tmp -> value = rhs;
-		tmp -> next = 0; //nullptr instead of 0
+		tmp -> next = 0;
 		cap = 1;
 		first = tmp;
 		delete[] tmp;
 		
 	}
-//	~stack(){
-//		while(true){
-//		    pop();
-//		}
-//	}
-//надо пределать деструктр с try catch	
+ 	~stack(){
+ 	    try{
+ 		while(true){
+ 		    pop();
+ 		}
+ 	    }catch (int a){
+             cout << "stack is empty";
+         }
+ 	}
 	
-//	int operator[](size_t _index) const {
-//		int stb;
-//		for (int i = 0; i < _index; i++){
-//			stb = first -> value;
-//		}
-//		return first -> next -> value;
-//	}
-//надо доделать перегрузку скобок для вывода стека
+	T operator[](unsigned index) const{
+		Node<T>* tmp = first;
+		for(int i = 0; i < index; i++){
+			tmp = tmp -> next;
+		}
+		return tmp -> value;
+
+		}
 };
 
-template<typename T>
-inline ostream& operator<<(ostream& os, const stack<T>& st) {
-    for (size_t i = 0; i < st.cap(); i++) 
-		os << st[i] << " ";
-    return os;
-}
+ template<typename T>
+ inline ostream& operator<<(ostream& os, const stack<T>& st) {
+     for (size_t i = 0; i < st.cap; i++) 
+ 		os << st[i] << " ";
+     return os;
+ }
 
 int main(){
 	stack<int> st1(1);
 	st1.push(4);
 	st1.push(2);
 	st1.push(3);
-	st1.pop();
-//	cout << st1;
-
+ 	cout << st1[0] << endl;
+	cout << st1.top() << endl;
+	cout << st1 << endl;
+ 	st1.pop();
+ 	cout << st1.top() << endl;
+	cout << st1;
 }
