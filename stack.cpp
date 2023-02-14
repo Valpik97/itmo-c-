@@ -1,5 +1,7 @@
 #include <iostream>
+#include <vector>
 using namespace std;
+
 
 template<typename T>
 struct Node{
@@ -20,9 +22,13 @@ public:
 	T top(){
 		if(first == 0){
 			cout << ("Stack is empty");
+			return -1;
 		}
-		return first -> value;
+		else{
+			return first -> value;
+		}
 	}
+	
 	
 	void push(T a){
 		Node<T>* tmp = new Node<T>;
@@ -80,6 +86,45 @@ public:
  		os << st[i] << " ";
      return os;
  }
+ 
+ template<typename T>
+ void reverse(const stack<T>& st){
+ 	for (size_t i = st.cap; i < 0; i--) 
+ 		cout << st[i] << " ";
+ 	cout << endl;
+ }
+
+void menu(){
+	bool m = true;
+	int a, b;
+	string g;
+	vector<stack<int>> arr;
+	while(m){
+
+	cout<<"konsol: vyberite operatsiyu iz spiska :"<< endl;
+	cout<<"1)sozdat novyy stek"<< endl;
+	cout<<"2)posmotret spisok stekov"<< endl;
+	cout<<"3)vybrat stek"<< endl;
+	cout<<"3)vyyti iz menyu"<< endl;
+	cin >> a;
+		if(a == 1){
+			cout<<"konsol: vvedite nazvaniye steka: "<< endl;
+			cin >> g;
+			cout<<"konsol: vvedite pervyy element: "<< endl;
+			cin >> b;
+			stack<int> g(1);
+			arr.push_back(g);
+		}
+		if(a == 2){
+			for (int i=0; i< arr.size(); ++i)
+    			cout << arr[i] << ' ';
+			
+			
+		}
+		}
+		
+	
+	}
 
 int main(){
 	stack<int> st1(1);
@@ -89,7 +134,7 @@ int main(){
  	cout << st1[0] << endl;
 	cout << st1.top() << endl;
 	cout << st1 << endl;
+	reverse(st1);
  	st1.pop();
- 	cout << st1.top() << endl;
-	cout << st1;
+//	menu();
 }
