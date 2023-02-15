@@ -16,7 +16,7 @@ char random_char(){
 
 void startgame(){
 	string str;
-	cout<<"Èãðà íà÷íåòñÿ ÷åðåç:" << endl;
+	cout<<"Ð˜Ð³Ñ€Ð° Ð½Ð°Ñ‡Ð½ÐµÑ‚ÑÑ Ñ‡ÐµÑ€ÐµÐ·:" << endl;
 	Sleep(1000);
 	cout<<"3" << endl;
 	Sleep(1000);
@@ -24,13 +24,13 @@ void startgame(){
 	Sleep(1000);
 	cout<<"1" << endl;
 	Sleep(1000);
-	cout<<"Èãðà íà÷àëàñü!" << endl;
+	cout<<"Ð˜Ð³Ñ€Ð° Ð½Ð°Ñ‡Ð°Ð»Ð°ÑÑŒ!" << endl;
 	Sleep(1000);
 	vector<char> arr;
 	arr.push_back(' ');
 	for(int i = 0; i < 31; i++){
 		arr.push_back(random_char());
-		cout << "óðîâåíü " << i << endl;
+		cout << "ÑƒÑ€Ð¾Ð²ÐµÐ½ÑŒ " << i << endl;
 		for(int i = 0; i < 64; i++){
 			char chr = arr[rand() % (sizeof(arr) - 1)];
 			str.push_back(chr);	
@@ -43,15 +43,15 @@ void start(){
 	int n, x = 63;
 	string m;
 	srand(time(NULL) + rand());
-	cout<< "ÍÀÓ×ÈÒÜÑß ÏÅ×ÀÒÀÒÜ ÂÑËÅÏÓÞ"<< endl << "ÌÅÍÞ" << endl;
-	cout << "íàæìèòå:" << endl << "1) ×òîáû íà÷àòü òðåíèðîâêó" << endl; 
-	cout << "2) ×òîáû ïîñìîòðåòü òàáëèöó ëèäåðîâ" << endl << "3) Ïðàâèëà" << endl;
+	cout<< "ÐÐÐ£Ð§Ð˜Ð¢Ð¬Ð¡Ð¯ ÐŸÐ•Ð§ÐÐ¢ÐÐ¢Ð¬ Ð’Ð¡Ð›Ð•ÐŸÐ£Ð®"<< endl << "ÐœÐ•ÐÐ®" << endl;
+	cout << "Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ:" << endl << "1) Ð§Ñ‚Ð¾Ð±Ñ‹ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ñ‚Ñ€ÐµÐ½Ð¸Ñ€Ð¾Ð²ÐºÑƒ" << endl; 
+	cout << "2) Ð§Ñ‚Ð¾Ð±Ñ‹ Ð¿Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ Ð»Ð¸Ð´ÐµÑ€Ð¾Ð²" << endl << "3) ÐŸÑ€Ð°Ð²Ð¸Ð»Ð°" << endl;
 	cin >> n;
 	if(n == 1){
 		startgame();
 	}
 	else if (n == 3){
-		cout << "Ïå÷àòàòü òîëüêî ñ êàïñëîêîì. Ýòî âñå ïðàâèëà"<< endl << "Äëÿ âûõîäà ââåñòè 1" << endl;
+		cout << "ÐŸÐµÑ‡Ð°Ñ‚Ð°Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ ÐºÐ°Ð¿ÑÐ»Ð¾ÐºÐ¾Ð¼. Ð­Ñ‚Ð¾ Ð²ÑÐµ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð°"<< endl << "Ð”Ð»Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð° Ð²Ð²ÐµÑÑ‚Ð¸ 1" << endl;
 		cin >> n;
 		if (n == 1)
 			system("cls");
@@ -68,5 +68,3 @@ int main(){
 //	cout << chr;
 
 }
-
-
