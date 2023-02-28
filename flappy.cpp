@@ -5,6 +5,7 @@
 #include<mutex>
 #include<windows.h>
 #include<chrono>
+#include <time.h>
  
 using namespace std;
  
@@ -37,9 +38,9 @@ public:
 				} else {
 					cout << ' ';
 				}
-//				if((point.x * point.y == 0 || point.x == height - 1 || point.y == width - 1)) {
-//					break;
-//				}
+			if(Point.x * Point.y == 0 or Point.x == height - 1 or Point.y == width - 1) {
+				exit(0);
+			}
 			}
 			cout << endl;
 		}
@@ -77,6 +78,10 @@ void isPressed() {
 			velocityY = -1;
 		} else {
 			velocityY = 1;
+			while(!GetAsyncKeyState(VK_SPACE) & 0x80000000) {
+				velocityY += 5;
+				std::chrono::milliseconds(1000);
+			}
 		}	
 		mtx.unlock();
 	}
